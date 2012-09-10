@@ -11,3 +11,6 @@
 10)Quitar el cierre de la modal de regisro (closer...)***LISTO
 11)Por qué la ventana de errores está en cada vista y no en la layout/application.html???
 12)El visitante debe poder modificar sus datos...
+
+
+
