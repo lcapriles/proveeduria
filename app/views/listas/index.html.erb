@@ -1,0 +1,28 @@
+<fieldset id="contenido" style="width: 800px;" >
+  <legend id="leyendaindex">
+    Listas
+  </legend>
+  <table class="botonera" frame = "box" width = "520">
+    <tr>
+      <td>
+        <%= link_to image_tag("Add.gif", :mouseover => "Addmo.gif", :border => 0), new_lista_path %>
+        <%= link_to image_tag("Cancel.gif", :mouseover => "Cancelmo.gif", :border => 0), "institutos" %>
+      </td>
+    </tr>
+  </table>
+  <br />
+  <%= form_tag(listas_path, :method => "get") do %>
+    <table class="qbe">
+      <col width="385"/>
+      <col width="60"/>
+      <tr>
+        <td><%= text_field_tag :nombre, @qbe_key[:nombre], :maxlength => 60, :size =>60 %></td>
+        <td><%= text_field_tag :grado, @qbe_key[:grado], :maxlength => 2, :size => 5 %></td>
+        <td><%= image_submit_tag "Find.gif", :id => "BotonFind1" %></td>
+      </tr>
+    </table>
+  <% end %>
+  <div id="lista">
+    <%= render :partial => "lista" %>
+  </div>
+</fieldset>

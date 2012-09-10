@@ -1,0 +1,22 @@
+  <%= form_for(@visitante) do |f| %>
+    <% if @visitante.errors.any? %>
+      <div id="ventana_errores">
+        <h2>Se encontraron <%= pluralize(@visitante.errors.count, "error") %></h2>
+
+        <ul>
+          <% @visitante.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <table class="botonera" frame = "box" width = "600">
+      <tr>
+        <td>
+          <%= image_submit_tag "OK.gif", :id => "BotonOK1" %>
+          <%= link_to image_tag("Cancel.gif", :mouseover => "Cancelmo.gif", :border => 0), "/" %>
+        </td>
+      </tr>
+    </table>
+  <%= render 'campos' %>
+  <% end %>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <title><%= controller_name.capitalize %> / <%= controller.action_name %></title>
+    <%= stylesheet_link_tag :all %>
+    <%= javascript_include_tag 'jquery-1.5.1.min' %>
+    <%= javascript_include_tag 'jquery','jquery.min' %>
+    <%= javascript_include_tag 'jquery_ujs' %>
+    <%= javascript_include_tag 'jquery-ui-1.8.13.custom.min','autocomplete-rails' %>
+    <%= javascript_include_tag 'jquery-ui-1.8.13.datepicker.min','jquery.ui.datepicker-es' %>
+	  
+    <%= javascript_include_tag 'application' %>
+    <%= javascript_include_tag 'facebox' %>
+
+    <%= stylesheet_link_tag 'facebox' %>
+
+    <%= csrf_meta_tag %>
+  </head>
+
+  <body>
+    <div id="encabezado">
+      <img alt=""  src="/images/logo.png"/>
+      <%= @page_title || "Tienda Escolar" %>
+    </div>
+    <div id="id_usuario" style="float:right;font-size: 10px;" >
+      <%=  link_to "#{session[:usuario_conectado]}", :controller => "admin", :action => "logout" %>
+    </div>
+    <div id="principal">
+      <div id="cuerpo">
+        <% if flash[:notice] -%>
+          <div id="mensaje">
+            <%= flash[:notice] %>
+          </div>
+        <% end -%>
+        <%= yield :layout %>
+      </div>
+    </div>
+  </body>
+</html>

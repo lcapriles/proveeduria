@@ -1,0 +1,11 @@
+<%= fields_for @usuario do |f| %>
+  <table>
+    <col width="200px"/><col width="205px"/>
+    <tr><td>Usuario nombre </td> <td><%= f.text_field :nombre, :size =>32, :maxlength =>32 %></td></tr>
+    <tr><td>Usuario login </td> <td><%= f.text_field :login, :size =>16, :maxlength =>16 %></td></tr>
+    <tr><td>Password </td> <td><%= f.password_field :password, :size => 10%></td></tr>
+    <tr><td>Confirme </td> <td><%= f.password_field :password_confirmation, :size => 10%></td></tr>
+  </table>
+
+  <br/>
+<% end %>

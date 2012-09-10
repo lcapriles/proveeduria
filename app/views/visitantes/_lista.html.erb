@@ -1,0 +1,35 @@
+<table class="tope">
+  <col width="335"/>
+  <col width="335"/>
+  <col width="245"/>
+  <col width="150"/>
+  <tr>
+    <th> <%= ordenacion  "nombres", "Nombre" %> </th>
+    <th> <%= ordenacion "apellidos", "Apellido" %> </th>
+    <th> <%= ordenacion "email", "Correo" %> </th>
+    <th> <%= ordenacion "telefono1", "Teléfono" %> </th>
+  </tr>
+</table>
+
+<table class="lista">
+  <col width="335"/>
+  <col width="335"/>
+  <col width="245"/>
+  <col width="150"/>
+  <% @visitantes.each do |visitante| %>
+    <tr class="<%= cycle("Impar","Par") %>"
+        onmouseover="document.getElementById('tabla-lista<%=  visitante.id %>').className='con-botones';"
+        onmouseout="document.getElementById('tabla-lista<%=  visitante.id %>').className='sin-botones';">
+      <td><%= visitante.nombres %></td>
+      <td><%= visitante.apellidos %></td>
+      <td><%= visitante.email %></td>
+      <td><%= visitante.telefono1 %></td>
+      <td class="sin-botones" id="tabla-lista<%= visitante.id %>">
+        <%= link_to image_tag("Select.gif", :mouseover => "Selectmo.gif", :border => 0), edit_visitante_path(visitante) %>
+        <%= link_to image_tag("Delete.gif", :mouseover => "Deletemo.gif", :border => 0), visitante, :confirm => "Confirma la operacion?", :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+<br />
+<%= paginate @visitantes %>
+

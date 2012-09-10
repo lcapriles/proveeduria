@@ -1,0 +1,37 @@
+<table class="tope">
+  <col width="313"/>
+  <col width="313"/>
+  <col width="80"/>
+  <col width="80"/>
+  <tr>
+    <th> <%= ordenacion "articulo.nombre_generico", "Nombre" %> </th>
+    <th> <%= ordenacion "articulo.caracteristicas", "Caracteristicas" %> </th>
+    <th> <%= ordenacion "articulo.unidad_medida", "Unidad" %> </th>
+    <th> <%= ordenacion "cantidad", "Cantidad" %> </th>
+  </tr>
+</table>
+<table class="lista">
+  <col width="313"/>
+  <col width="313"/>
+  <col width="70"/>
+  <col width="80"/>
+  <% @articulos_listas.each do |articulolista| %>
+    <tr class="<%= cycle("Impar","Par") %>"
+        onmouseover="document.getElementById('tabla-lista<%=  articulolista.id %>').className='con-botones';"
+        onmouseout="document.getElementById('tabla-lista<%=  articulolista.id %>').className='sin-botones';">
+      <td><p STYLE="width:140px;"> <%= articulolista.articulo.nombre_generico %></p></td>
+      <td><p STYLE="width:300px;"> <%= articulolista.articulo.caracteristicas %> </p></td>
+      <td><p STYLE="width:80px;">  <%= articulolista.articulo.unidad_medida %></p></td>
+      <td><%= articulolista.cantidad %></td>
+      <td class="sin-botones" id="tabla-lista<%= articulolista.id %>">
+        <%= link_to image_tag("Select.gif", :mouseover => "Selectmo.gif", :border => 0), edit_articulo_lista_path(articulolista) %>
+        <%= link_to "borrar", articulolista, :confirm => 'Confirma la operacion?', :method => :delete %>
+      </td>
+      <td  style="visibility:hidden">
+        <%= articulolista.articulo_id %>
+      </td>
+    </tr>
+  <% end %>
+</table>
+<br />
+<%= paginate @articulos_listas %>

@@ -1,0 +1,54 @@
+<%= form_tag("/compras/carrito_compra", :method => "post", :name => "form_carrito_articulos_compra") do %>
+  <table class="tope">
+    <col width="21"/>
+    <col width="183"/>
+    <col width="300"/>
+    <col width="30"/>
+    <col width="40"/>
+    <col width="75"/>
+    <tr>
+      <th>  </th>
+      <th>Nombre</th>
+      <th>Caracteristicas</th>
+      <th>UM</th>
+      <th>Cant.</th>
+      <th>Cantidad</th>
+    </tr>
+  </table>
+  <table class="lista">
+    <col width="20"/>
+    <col width="185"/>
+    <col width="300"/>
+    <col width="30"/>
+    <col width="40"/>
+    <col width="90"/>
+    <% @articulos_lista.each_with_index do |articulolista, i| %>
+      <tr class="<%= cycle("Impar","Par") %>" id="tr_articulolista_<%= articulolista.id %>">
+        <td><%= check_box_tag "articulolista_id_#{articulolista.id}", articulolista.id, params[:check_status][i] %></td>
+        <td><p STYLE="width:145px;"> <%= articulolista.articulo.nombre_generico %></p></td>
+        <td><p STYLE="width:230px;"> <%= articulolista.articulo.caracteristicas %> </p></td>
+        <td><p STYLE="width:27px;">  <%= articulolista.articulo.unidad_medida %></p></td>
+        <td><p STYLE="width:30px;">  <%= articulolista.cantidad %></p></td>
+        <td><%= text_field_tag "cantidad#{articulolista.id}","#{params[:check_cantidad][i]}", :maxlength => 3, :size => 2 %>
+
+            <%= hidden_field_tag "articulo#{articulolista.id}", articulolista.articulo_id %>
+            <%= hidden_field_tag "lista#{articulolista.id}", articulolista.lista_id %> 
+        </td>
+      </tr>
+    <% end %>
+  </table>
+  <br />
+  <div  style="font-size: 12px; line-height: 6px;">
+    <table >
+      <tr>
+        <td>Especifica un nombre para tu compra..</td>
+        <td><%= text_field_tag "Nombre", params[:lista_nombre], :maxlength => 32, :size => 32 %></td>
+      </tr>
+      <tr>
+       <td>Especifica cuántas listas va comprar....</td>
+       <td><%= text_field_tag "Cantidad", params[:lista_cantidad], :maxlength => 2, :size => 2 %></td>
+      </tr>
+    </table>
+    <%= image_submit_tag "OK.gif", :id => "BotonOK1" %>
+  </div>
+<% end %>

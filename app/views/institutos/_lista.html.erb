@@ -1,0 +1,23 @@
+<table class="tope">
+  <col width=400px></col>
+  <tr>
+    <th> <%= ordenacion "nombre", "Nombre" %> </th>
+  </tr>
+</table>
+
+<table class="lista">
+  <col width=400px></col>
+  <% @institutos.each do |instituto| %>
+    <tr  class="<%= cycle("Impar","Par") %>"
+         onmouseover="document.getElementById('tabla-lista<%=  instituto.id %>').className='con-botones';"
+         onmouseout="document.getElementById('tabla-lista<%=  instituto.id %>').className='sin-botones';">
+      <td><p STYLE="width:200px;"> <%= instituto.nombre %> </p> </td>
+      <td class="sin-botones" id="tabla-lista<%= instituto.id %>">
+        <%= link_to image_tag("Select.gif", :mouseover => "Selectmo.gif", :border => 0), edit_instituto_path(instituto) %>
+        <%= link_to image_tag("MoveRight.gif", :mouseover => "MoveRightMO.gif", :border => 0), lista_articulos_url(instituto) %>
+        <%= link_to image_tag("Delete.gif", :mouseover => "Deletemo.gif", :border => 0), instituto, :confirm => 'Confirma la operacion?', :method => :delete %>
+      </td>
+    </tr>
+  <% end %>
+</table>
+<%= paginate @institutos %>

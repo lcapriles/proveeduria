@@ -1,0 +1,41 @@
+<table class="tope">
+  <col width="80px"/>
+  <col width="470px"/>
+
+  <tr> 
+    <th> <%= ordenacion  "login", "Login" %> </th>
+    <th> <%= ordenacion  "nombre", "Nombre" %> </th>
+    <th>     </th>
+  </tr>
+</table>
+
+  <%= form_tag(usuarios_path, :method => "get") do %>
+    <table class="qbe">
+      <col width="80px"/>
+      <col width="470px"/>
+      <tr>
+        <td align=left><%= text_field_tag :login, @qbe_key[:login],  :maxlength => 10, :size =>10 %></td>
+        <td align=left><%= text_field_tag :nombre, @qbe_key[:nombre],  :maxlength => 32, :size =>60 %></td>
+        <td><%= image_submit_tag "Find.gif", :id => "BotonFind1" %></td>
+      </tr>
+    </table>
+  <% end %>
+
+<table class="lista">
+  <col width="80px"/>
+  <col width="470px"/>
+  <% for usuario in @usuarios -%>
+    <tr class="<%= cycle("Impar","Par") %>" 
+        onmouseover="document.getElementById('tabla-lista<%=  usuario.id %>').className='con-botones';"
+        onmouseout="document.getElementById('tabla-lista<%=  usuario.id %>').className='sin-botones';">
+      <td><%= usuario.login %></td>
+      <td><%= usuario.nombre %></td>
+      <td class="sin-botones" id="tabla-lista<%=  usuario.id %>"><%= link_to image_tag("modetail.gif", :mouseover => "modetailmo.gif", :border => 0), usuario %>
+          <%= link_to image_tag("Select.gif", :mouseover => "Selectmo.gif", :border => 0), edit_usuario_path(usuario) %>
+          <%= link_to image_tag("Delete.gif", :mouseover => "Deletemo.gif", :border => 0), usuario, :confirm => 'Confirma la operacion?', :method => :delete %></td>
+    </tr>
+  <% end -%>
+</table>
+
+<br />
+<%= paginate @usuarios  %>

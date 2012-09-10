@@ -1,0 +1,7 @@
+<% if session[:visitante_id].nil?  %>
+      <%= 
+          render(:update) {|page| page.replace_html 'RB_window', :partial => 'registro', :object => @visitante}
+      %>
+<% else %>
+  
+<% end %>

@@ -1,0 +1,61 @@
+<div id="carrito">
+
+  <div id="carrito_izq"style="float: left;">
+    <fieldset id="contenido" style="width: 850px;" >
+      <legend id="leyendaindex">
+        Carrito Compras - Listas de Utiles
+      </legend>
+      <table class="botonera" frame = "box" width = "580px">
+        <tr>
+          <td>
+            <%= link_to image_tag("Cancel.gif", :mouseover => "Cancelmo.gif", :border => 0), "/compras/carrito_visitante" %>
+            <%= link_to image_tag("Select.gif", :mouseover => "Selectmo.gif", :border => 0), "/compras/carrito_checkout" %>
+          </td>
+        </tr>
+      </table>
+      <br />
+      <div id="lista">
+        <div id="lista_izq" style="float: left; width: 250px; ">
+          <p>
+            <img  src="<%= url_for(:controller => 'institutos', :action => 'display_logo', :id => session[:compra_instituto_actual]) %>"
+            alt="<%= a=Instituto.find(session[:compra_instituto_actual]).nombre%>" title="<%= a %>"  width="150" height="100"/>
+          </p>
+          </br>
+
+          <% @carrito_listas.in_groups_of(2, false) do |items| %>
+            <ul style= "line-height: 18px;">
+              <% for item in items %>
+                <li> <%= link_to  item.nombre, { :controller => 'compras', :action => 'carrito_lista', :id => item.id.to_s}, :remote => true %> </li>
+              <% end %>
+            </ul>
+          <% end %>
+
+        </div>
+        <div id="lista_der" style="float: left; width: 600px">
+          <div id="lista_carrito">
+
+            <%= render :partial => "lista_articulos", :object => @articulos_lista %>
+
+          </div>
+        </div>
+
+      </div>
+    </fieldset>
+  </div>
+
+  <div id="carrito_der" style="float: right; width: 250px; font-size: 10px; line-height: 6px;">
+     <table class="topecito">
+        <col width="250"/>
+        <col width="80"/>
+
+        <tr>
+          <th> Nombre </th>
+          <th> Cantidad </th>
+
+        </tr>
+      </table>
+      <%= render :partial => "carrito_compra", :collection => @listas_compra %>
+  </div>
+
+</div>
+

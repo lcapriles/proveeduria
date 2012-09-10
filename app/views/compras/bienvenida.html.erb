@@ -1,0 +1,31 @@
+<div id="textolistaizquierda" style="float: left;">
+  <div id="texto01">
+    <img src='/images/compras/Texto01.JPG' alt='Bienvenida...' />
+  </div>
+  <br/>
+  <br/>
+  <div id="texto02">
+    <img src='/images/compras/Texto02.JPG' alt='Regístrate!!! ' />
+  </div>
+  <br/>
+  <br/>
+  <br/>
+<%= link_to content_tag(:button, 'Regístrate'),  { :controller => 'visitantes', :action => 'registro' }, :remote => true %> 
+  <br/>
+  <br/>
+  <br/>
+  <div id="texto03">
+    <img src='/images/compras/Texto03.JPG' alt='Haz tu compra!!! ' />
+  </div>
+  <br/>
+  <div id="texto04">
+    <img src='/images/compras/Texto04.JPG' alt='Paga tu compra!!! ' />
+  </div>
+  <br/>
+</div>
+
+<div id="logosinstitutos" style="float: left; overflow: auto; width: 550px; height: 550px;">
+  <%= render :partial => '/compras/lista_institutos' %>
+</div>
+<br/>
+

@@ -1,0 +1,14 @@
+<fieldset style=" width: 500px; height: 500px; border: 0;" >
+  <br />
+  <div id="lista">
+
+    <% if session[:usuario_conectado].nil? %>
+      <%= render_multicolumn_list(@carrito_institutos.collect {|item| link_to image_tag("/institutos/#{item.id.to_s}/display_logo", :alt => 'logo ', :title => "#{item.nombre}",  :width => '90', :height => '90',:border => 0), { :controller => 'compras', :action => 'instituto', :instituto_id => "#{item.id.to_s}" }, :remote => true}, 3) %>
+    <% else %>
+      <%= render_multicolumn_list(@carrito_institutos.collect {|item| link_to image_tag("/institutos/#{item.id.to_s}/display_logo", :alt => 'logo ', :title => "#{item.nombre}",  :width => '90', :height => '90',:border => 0), "/compras/#{item.id.to_s}/instituto" }, 3) %>
+    <% end %>
+ 
+  </div>
+                              
+</fieldset>
+

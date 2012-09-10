@@ -1,0 +1,10 @@
+<table>
+  <col width="200"/>
+  <col width="80"/>
+
+  <tr>
+    <td><%= link_to carrito_compra.nombre, { :controller => 'compras', :action => 'compra_upd', :id => carrito_compra_counter}, :remote => true %></td>
+    <td><%= carrito_compra.cantidad %></td>
+  </tr>
+</table>
+

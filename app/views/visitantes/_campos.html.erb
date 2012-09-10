@@ -1,0 +1,30 @@
+<table>
+  <%= fields_for @visitante do |f| %>
+    <tr>
+      <td>Nombres:</td><td><%= f.text_field :nombres, :maxlength => 60, :size => 60 %></td>
+    </tr>
+    <tr>
+      <td>Apellidos:</td><td><%= f.text_field :apellidos, :size => 60, :maxlength => 60 %></td>
+    </tr>
+    <tr>
+      <td>email:</td><td><%= f.text_field :email, :size => 80, :maxlength => 80 %></td>
+    </tr>
+    <tr>
+        <td>Telefonos:</td><td><%= f.text_field :telefono1  , :size => 15, :maxlength => 15 %>  , 
+                               <%= f.text_field :telefono2  , :size => 15, :maxlength => 15 %> </td>
+    </tr>
+    <tr>
+        <td>Zona:</td><td><%= f.text_field :zona, :size => 30, :maxlength => 30 %></td>
+    </tr>
+    <tr>
+      <td>Status:</td><td><%= f.text_field :estatus, :size => 4, :maxlength => 3 %></td>
+      </tr>   
+    <tr>
+      <td>Fecha Registro:</td><td><%= f.text_field :fecha_registro %></td>
+    </tr>
+    <tr>
+      <td>Fecha Confirmación:</td><td><%= f.text_field :fecha_confirmacion %></td>
+    </tr>
+  <% end %>
+</table>
+

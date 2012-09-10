@@ -1,0 +1,29 @@
+<table>
+  <%= fields_for @articulo do |f| %>
+    <tr>
+      <td>Tipo:</td><td><%= f.text_field :tipo_articulo, :maxlength => 10, :size =>10 %>
+      </td>
+    </tr>
+    <tr>
+      <td>Nombre Genérico:</td><td><%= f.text_field :nombre_generico, :size =>70, :maxlength => 80 %>
+      </td>
+    </tr>
+        <tr>
+      <td>Características:</td><td><%= f.text_area :caracteristicas, :rows => 3, :size =>70, :maxlength => 80 %>
+      </td>
+    </tr>
+        <tr>
+      <td>Unidad Venta:</td><td><%= f.text_field :unidad_medida, :size =>15, :maxlength => 15 %>
+      </td>
+    </tr>
+        <tr>
+      <td>Precio Vigente:</td><td><%= f.text_field :precio_unitario, :size =>10, :maxlength => 10 %>
+      </td>
+    </tr>
+        <tr>
+      <td>Existencias:</td><td><%= f.text_field :existencias, :size =>4, :maxlength => 4 %>
+      </td>
+    </tr>
+  <% end %>
+</table>
+

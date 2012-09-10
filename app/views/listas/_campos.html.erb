@@ -1,0 +1,17 @@
+<%= fields_for @lista do |f| %>
+  <table>
+    <tr>
+      <td>Nombre:</td>
+      <td><%= f.text_field :nombre, :size =>80,  :maxlength => 60 %></td>
+    </tr>
+    <tr>
+      <td>Grado:</td>
+      <td><%= f.text_field :grado, :size =>5, :maxlength => 2 %></td>
+    </tr>
+    <td>
+      <span style="visibility:hidden">
+        <%= f.text_field :instituto_id %>
+      </span>
+    </td>
+  </table>
+<% end %>

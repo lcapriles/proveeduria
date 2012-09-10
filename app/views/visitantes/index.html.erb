@@ -1,0 +1,32 @@
+<fieldset id="contenido" style="width: 1165px;" >
+  <legend id="leyendaindex">
+    Visitantes
+  </legend>
+  <table class="botonera" frame = "box" width = "580">
+    <tr>
+      <td>
+        <%= link_to image_tag("Add.gif", :mouseover => "Addmo.gif", :border => 0), new_visitante_path %>
+        <%= link_to image_tag("Cancel.gif", :mouseover => "Cancelmo.gif", :border => 0), "admin/entrada" %>
+      </td>
+    </tr>
+  </table>
+  <br />
+  <%= form_tag(visitantes_path, :method => "get") do %>
+    <table class="qbe">
+      <col width="335"/>
+      <col width="335"/>
+      <col width="245"/>
+      <col width="150"/>
+      <tr>
+        <td><%= text_field_tag :nombres, @qbe_key[:nombres], :maxlength => 60, :size =>51 %></td>
+        <td><%= text_field_tag :apellidos, @qbe_key[:apellidos], :maxlength => 60, :size => 52 %></td>
+        <td><%= text_field_tag :email, @qbe_key[:email], :maxlength => 80, :size => 36 %></td>
+        <td><%= text_field_tag :telefono1, @qbe_key[:telefono1], :maxlength => 15, :size => 19 %></td>
+        <td><%= image_submit_tag "Find.gif", :id => "BotonFind1" %></td>
+      </tr>
+    </table>
+  <% end %>
+  <div id="lista">
+    <%= render :partial => "lista" %>
+  </div>
+</fieldset>

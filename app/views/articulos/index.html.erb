@@ -1,0 +1,30 @@
+<fieldset id="contenido" style="width: 1000px;" >
+  <legend id="leyendaindex">
+    Tabla de Articulos
+  </legend>
+  <table class="botonera" frame = "box" width = "630px">
+    <tr>
+      <td>
+        <%= link_to image_tag("Add.gif", :mouseover => "Addmo.gif", :border => 0), new_articulo_path %>
+        <%= link_to image_tag("Cancel.gif", :mouseover => "Cancelmo.gif", :border => 0), "admin/entrada" %>
+      </td>
+    </tr>
+  </table>
+  <br />
+  <%= form_tag(articulos_path, :method => "get") do %>
+  <table class="qbe">
+      <tr>
+        <td><%= text_field_tag :nombre_generico, @qbe_key[:nombre_generico], :maxlength => 40, :size => 28 %></td>
+        <td><%= text_field_tag :tipo_articulo, @qbe_key[:tipo_articulo], :maxlength => 10, :size =>8 %></td>
+        <td><%= text_field_tag :caracteristicas, @qbe_key[:caracteristicas], :maxlength =>40 , :size =>46 %></td>
+        <td><%= text_field_tag :unidad_medida, @qbe_key[:unidad_medida], :maxlength => 10, :size =>7 %></td>
+        <td><%= text_field_tag :precio_unitario, @qbe_key[:precio_unitario], :maxlength => 10, :size =>15 %></td>
+        <td><%= text_field_tag :existencias, @qbe_key[:existencias], :maxlength => 10, :size =>8 %></td>
+        <td><%= image_submit_tag "Find.gif", :id => "BotonFind1" %></td>
+      </tr>
+    </table>
+  <% end %>
+  <div id="lista">
+    <%= render "lista" %>
+  </div>
+</fieldset>

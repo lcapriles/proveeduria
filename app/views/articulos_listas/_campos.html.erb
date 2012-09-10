@@ -1,0 +1,16 @@
+<%= fields_for @articulo_lista do |f| %>
+  <table>
+    <tr>
+      <td>Artículo:</td>
+      <td><%= @articulo_lista.articulo_id %> /  <%= @articulo_lista.articulo.nombre_generico %></td>
+    </tr>
+    <tr>
+      <td>Cantidad:</td>
+      <td><%= f.text_field :cantidad, :size =>10, :maxlength => 10 %></td>
+    </tr>
+        <tr>
+      <td>Unidad:</td>
+      <td><%= @articulo_lista.articulo.unidad_medida %></td>
+    </tr>
+  </table>
+<% end %>

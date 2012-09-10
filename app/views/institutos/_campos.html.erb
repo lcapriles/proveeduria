@@ -1,0 +1,52 @@
+<%= fields_for @instituto do |f| %>
+  <img src="<%= url_for(:action => 'display_logo', :id => @instituto.id) %>"
+       alt="logo " width="90" height="90">
+  </img>
+  <table>
+    <tr>
+      <td>Nombre:</td>
+      <td><%= f.text_field :nombre, :size =>80,  :maxlength => 60 %></td>
+    </tr>
+    <tr>
+      <td>Contacto 1:</td>
+      <td><%= f.text_field :contacto1, :size =>80, :maxlength => 60 %></td>
+    </tr>
+    <tr>
+      <td>Telefono 1:</td>
+      <td><%= f.text_field :telefono1, :size =>15, :maxlength => 15 %></td>
+    </tr>
+    <tr>
+      <td>e-mail 1:</td>
+      <td><%= f.text_field :email1, :size =>100, :maxlength => 80 %></td>
+    </tr>
+    <tr>
+      <td>Contacto 2:</td>
+      <td><%= f.text_field :contacto2, :size =>80, :maxlength => 60 %></td>
+    </tr>
+    <tr>
+      <td>Telefono 2:</td>
+      <td><%= f.text_field :telefono2, :size =>25, :maxlength => 25 %></td>
+    </tr>
+    <tr>
+      <td>e-mail 2:</td>
+      <td><%= f.text_field :email2, :size =>100, :maxlength => 80 %></td>
+    </tr>
+    <tr>
+      <td>Contacto 3:</td>
+      <td><%= f.text_field :contacto3, :size =>80, :maxlength => 60 %></td>
+    </tr>
+    <tr>
+      <td>Telefono 3:</td>
+      <td><%= f.text_field :telefono3, :size =>35, :maxlength => 35 %></td>
+    </tr>
+    <tr>
+      <td>e-mail 3:</td>
+      <td><%= f.text_field :email3, :size =>100, :maxlength => 80 %></td>
+    </tr>
+    <tr>
+      <td>Logo:</td>
+      <td> <%= f.file_field :logo_nombre %></td>
+    </tr>
+  <% end %>
+</table>
+

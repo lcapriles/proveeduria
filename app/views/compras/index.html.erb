@@ -1,0 +1,29 @@
+<fieldset id="contenido" style="width: 1165px;" >
+  <legend id="leyendaindex">
+    Compras
+  </legend>
+  <table class="botonera" frame = "box" width = "580">
+    <tr>
+      <td>
+        <%= link_to image_tag("Add.gif", :mouseover => "Addmo.gif", :border => 0), new_compra_path %>
+        <%= link_to image_tag("Cancel.gif", :mouseover => "Cancelmo.gif", :border => 0), "admin/entrada" %>
+      </td>
+    </tr>
+  </table>
+  <br />
+  <%= form_tag(compras_path, :method => "get") do %>
+    <table class="qbe">
+      <col width="335"/>
+      <col width="335"/>
+      <col width="245"/>
+      <col width="150"/>
+      <tr>
+        <td><%= text_field_tag :fecha_compra, @qbe_key[:fecha_compra], :maxlength => 10, :size =>10 %></td>
+        <td><%= image_submit_tag "Find.gif", :id => "BotonFind1" %></td>
+      </tr>
+    </table>
+  <% end %>
+  <div id="lista">
+    <%= render :partial => "lista" %>
+  </div>
+</fieldset>

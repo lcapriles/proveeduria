@@ -1,0 +1,82 @@
+<fieldset id="contenido" style="width: 780px;" >
+  <legend id="leyendaindex" style="width: 200px;"   >
+    Autorización de acceso
+  </legend>
+
+  <div id="lista">
+    <% if @visitante.errors.any? %>
+      <div id="ventana_errores">
+        <h2>Se encontraron <%= pluralize(@visitante.errors.count, "error") %></h2>
+        <ul>
+          <% @visitante.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div style="float: left; background-color: aqua; height: 231px;">
+      <%= form_tag("/visitantes/registro_nuevo", :method => "post")  do |f| %>
+        <h2>Nuevo Visitante</h2>
+        <table>
+          <%= fields_for @visitante do |f| %>
+            <tr>
+              <td>Nombres:</td><td><%= f.text_field :nombres, :size => 30,  :maxlength => 60 %></td>
+            </tr>
+            <tr>
+              <td>Apellidos:</td><td><%= f.text_field :apellidos, :size => 30,  :maxlength => 60 %></td>
+            </tr>
+            <tr>
+              <td>email:</td><td><%= f.text_field :email, :size => 35,  :maxlength => 80 %></td>
+            </tr>
+            <tr>
+              <td>Telefonos:</td><td><%= f.text_field :telefono1  , :size => 15, :maxlength => 15 %>  ,
+                <%= f.text_field :telefono2  , :size => 15, :maxlength => 15 %> </td>
+            </tr>
+            <tr>
+              <td>Zona Residencia:</td><td><%= f.text_field :zona, :size => 30, :maxlength => 30 %></td>
+            </tr>
+          <% end %>
+        </table>
+        <input type="hidden", id="tipo_registro", name="tipo_registro" value="nuevo"></input>
+        <table width = "300">
+          <tr>
+            <td>
+              <%= submit_tag "Continuar >>"%>
+            </td>
+          </tr>
+        </table>
+      <% end %>
+    </div>
+
+    <div style="float: left; background-color: gold ; padding-left:  6px; height: 231px;">
+      <%= form_tag("/visitantes/registro_recurrente", :method => "post", :remote => "true")  do |f| %>
+        <h2>Visitante Registrado</h2>
+        <table>
+          <tr>
+            <td style="height :183px; ">
+              <table>
+                <%= fields_for @visitante do |f| %>
+                  <tr>
+                    <td>email:</td><td><%= f.text_field :email, :size => 35, :maxlength => 80 %></td>
+                  </tr>
+                  <input type="hidden" id="tipo_registro" name="tipo_registro" value="recurrente"></input>
+                <% end %>
+              </table>
+              <div>
+                <table width = "300" style="padding-top: 75px;">
+                  <tr>
+                    <td>
+                      <%= submit_tag "Continuar >>"  %>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </td>
+          </tr>
+        </table>
+      <% end %>
+    </div>
+
+  </div>
+</fieldset>

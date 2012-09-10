@@ -1,0 +1,56 @@
+<div id="carrito">
+
+<div id="carrito_izq"style="float: left;">
+    <div id="lista">
+      <div style="float: left;">
+        <div id="texto01">
+          <img src='/images/compras/Texto01.JPG' alt='Bienvenida...' />   
+        </div>
+        </br> 
+        </br> 
+        <div id="texto02">
+          <img src='/images/compras/Texto02.JPG' alt='Regístrate!!! ' />   
+        </div>
+        </br>
+        </br> 
+        </br><%= link_to content_tag(:button, "Regístrate", :disabled => 'disabled'), { :controller => 'visitantes', :action => 'registro' }, :remote => true %>
+        </br>
+        </br> 
+        </br> 
+        <div id="texto03">
+          <img src='/images/compras/Texto03.JPG' alt='Haz tu compra!!! ' />   
+        </div>
+        </br>
+      </div>
+      
+      <div style="float: left;">
+        <div style="float: left; overflow: auto; width: 550px; height: 550px;">
+          <%= render :partial => 'lista_institutos' %>
+        </div>
+       </br> 
+        <div id="texto04">
+          <img src='/images/compras/Texto04.JPG' alt='Paga tu compra!!! ' />   
+        </div>
+
+        </br>
+        </div >
+
+    </div>
+  </div>
+
+  <div id="carrito_der" style="float: right; width: 250px; font-size: 10px; line-height: 6px;">
+     <table class="topecito">
+        <col width="250"/>
+        <col width="80"/>
+
+        <tr>
+          <th> Nombre </th>
+          <th> Cantidad </th>
+
+        </tr>
+      </table>
+      <%= render :partial => "carrito_compra", :collection => @listas_compra %>
+  </div>
+
+</div>
+
