@@ -1,5 +1,11 @@
 class ApplicationController < ActionController::Base
 
+
+
+	  def is_binary_data?
+		( self.count( "^ -~", "^\r\n" ).fdiv(self.size) > 0.3 || self.index( "\x00" ) ) unless empty?
+	  end
+
   before_filter :authorize_usuario, :except => [ :login, :display_logo, :bienvenida,
                                                  :carrito_visitante, :instituto, :carrito_lista,:compra_upd, :carrito_compra, :carrito_checkout,
                                                  :confirmacion_registro,  

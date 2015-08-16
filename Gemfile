@@ -1,35 +1,24 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.7'
+#gem 'rails', '3.0.7'
+gem 'rails', '3.2.8'
 
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
-
-# Use unicorn as the web server
-# gem 'unicorn'
-
-# Deploy with Capistrano
-# gem 'capistrano'
-
-
-
-# To use debugger (ruby-debug for Ruby 1.8.7+, ruby-debug19 for Ruby 1.9.2+)
-#gem 'ruby-debug'
-gem 'ruby-debug19', :require => 'ruby-debug',:platform => :ruby_19
-gem 'ruby-debug-base19', :platform => :ruby_19
-gem 'ruby-debug-ide19', :platform => :ruby_19
-gem 'rails3-jquery-autocomplete'
-gem 'nifty-generators'
-
+group :development, :test do
+	# To use debugger (ruby-debug for Ruby 1.8.7+, ruby-debug19 for Ruby 1.9.2+)
+	gem 'ruby-debug19', '~>0.11.6', :require => 'ruby-debug', :platform => :ruby_19
+	gem 'ruby-debug-base19', '~>0.11.26', :platform => :ruby_19
+	gem 'ruby-debug-ide19', '~>0.4.12', :platform => :ruby_19
+	gem 'linecache19', '0.5.13'
+end
 
 # Bundle the extra gems:
-# gem 'bj'
-# gem 'nokogiri'
+gem 'rails3-jquery-autocomplete'
+gem 'nifty-generators'
 gem 'sqlite3-ruby', :require => 'sqlite3'
 # gem 'aws-s3', :require => 'aws/s3'
 gem 'kaminari'
 gem 'mongrel', '1.2.0.pre2'
-gem 'linecache19', '0.5.12'
+
 #TODO:Desinstalar!!!
 #gem 'prototype_legacy_helper', '0.0.0', :git => 'git://github.com/rails/prototype_legacy_helper.git' 
 gem 'jquery-rails', '>=1.0.12'
